@@ -1,24 +1,29 @@
-<!DOCTYPE html><html lang="pt">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>HilGaming Mods</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
-<script src='//libtl.com/sdk.js' data-zone='9590572' data-sdk='show_9590572'></script>
+  <script src='//libtl.com/sdk.js' data-zone='9590572' data-sdk='show_9590572'></script>
 </head>
 <body>
   <script src="https://inapp.telega.io/sdk/v1/sdk.js"></script>
-<script>
-  const ads = window.TelegaIn.AdsController.create_miniapp({
-    token: '9b1e446b-5af2-4051-b66d-d4ceeca10a62' });
-</script>
+  <script>
+    const ads = window.TelegaIn.AdsController.create_miniapp({
+      token: '9b1e446b-5af2-4051-b66d-d4ceeca10a62'
+    });
+  </script>
+
   <header>
     <h1>HilGaming MODs</h1>
-    <input type="text" id="search" placeholder="Pesquisar mods...">
-  </header>  <main id="posts"></main>  ads.ad_show({
-  adBlockUuid: "61ddc324-19c8-4c7b-a123-e9754adecf08"
-});<script>
+    <input type="text" id="search" placeholder="Search for mods...">
+  </header>
+
+  <main id="posts"></main>
+
+  <script>
     const mods = [
       {
         title: "Efootball 26 MOD FIFA 16",
@@ -51,43 +56,40 @@
         download: "https://gplinks.co/diwehZ"
       }
     ];
-ads.ad_show({
-  adBlockUuid: "61ddc324-19c8-4c7b-a123-e9754adecf08"
-});
+
     const container = document.getElementById('posts');
 
     function createPost(mod) {
       return `
-      <section class="post">
-        <h2>${mod.title}</h2>
-        <div class="slideshow">
-          ${mod.images.map(img => `<img src="${img}" alt="${mod.title}">`).join('')}
-        </div>
-        <iframe src="${mod.video}" frameborder="0" allowfullscreen></iframe>
-        <div class="countdown-box">
-          <button onclick="startCountdown('${mod.download}', this)">Baixar MOD</button>
-        </div>
-      </section>`;
+        <section class="post">
+          <h2>${mod.title}</h2>
+          <div class="slideshow">
+            ${mod.images.map(img => `<img src="${img}" alt="${mod.title}">`).join('')}
+          </div>
+          <iframe src="${mod.video}" frameborder="0" allowfullscreen></iframe>
+          <div class="countdown-box">
+            <button onclick="showAdThenDownload('${mod.download}', this)">⬇️ Download MOD</button>
+          </div>
+        </section>`;
     }
 
     function loadPosts() {
       container.innerHTML = mods.map(createPost).join('');
     }
 
-    function startCountdown(url, btn) {
-      let time = 60;
+    function showAdThenDownload(url, btn) {
       btn.disabled = true;
-      const originalText = btn.textContent;
-      const interval = setInterval(() => {
-        if (time > 0) {
-          btn.textContent = `Espere ${time--}s...`;
-        } else {
-          clearInterval(interval);
-          window.open(url, '_blank');
-          btn.textContent = originalText;
-          btn.disabled = false;
-        }
-      }, 1000);
+      btn.textContent = "⏳ Watching ad...";
+      show_9590572().then(() => {
+        alert("✅ Ad completed! Download link unlocked.");
+        window.open(url, '_blank');
+        btn.textContent = "⬇️ Download MOD";
+        btn.disabled = false;
+      }).catch(() => {
+        alert("⚠️ You must watch the full ad to unlock the link.");
+        btn.textContent = "⬇️ Download MOD";
+        btn.disabled = false;
+      });
     }
 
     document.getElementById('search').addEventListener('input', function () {
@@ -98,9 +100,9 @@ ads.ad_show({
 
     Telegram.WebApp.expand();
     loadPosts();
-  </script> ads.ad_show({
-  adBlockUuid: "61ddc324-19c8-4c7b-a123-e9754adecf08"
-}); <style>
+  </script>
+
+  <style>
     body { font-family: sans-serif; margin: 0; background: #f4f4f4; color: #333; }
     header { padding: 1em; background: #111; color: #fff; text-align: center; }
     input[type="text"] { width: 90%; padding: 0.5em; margin-top: 0.5em; border-radius: 5px; border: none; }
@@ -110,5 +112,6 @@ ads.ad_show({
     .countdown-box { text-align: center; margin-top: 1em; }
     .countdown-box button { background: #28a745; color: white; border: none; padding: 10px 20px; font-size: 1em; border-radius: 5px; cursor: pointer; }
     .countdown-box button:disabled { background: #ccc; cursor: not-allowed; }
-  </style></body>
+  </style>
+</body>
 </html>
