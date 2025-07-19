@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="style.css" />
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
   <script src='//libtl.com/sdk.js' data-zone='9590572' data-sdk='show_9590572'></script>
-
+<script src="https://ads.telega.io/ads.js"></script>
           <script src="https://richinfo.co/richpartners/telegram/js/tg-ob.js"></script>
           <script>
             window.TelegramAdsController = new TelegramAdsController();
@@ -16,7 +16,7 @@
               appId: "2901",
             });
           </script>
-  
+  <script src="https://ads.telega.io/ads.js"></script>
 </head>
 <body>
   <script src="https://inapp.telega.io/sdk/v1/sdk.js"></script>
@@ -25,18 +25,14 @@
       token: '9b1e446b-5af2-4051-b66d-d4ceeca10a62'
     });
   </script>
-ads.ad_show({
-  adBlockUuid: "c453039f-8ca0-4776-9d61-93d643b431c6"
-});
+
   <header>
     <h1>HilGaming MODs</h1>
     <input type="text" id="search" placeholder="Search for mods...">
   </header>
 
   <main id="posts"></main>
-ads.ad_show({
-  adBlockUuid: "61ddc324-19c8-4c7b-a123-e9754adecf08"
-});
+
   <script>
     const mods = [
       {
@@ -84,7 +80,16 @@ ads.ad_show({
           </div>
           <iframe src="${mod.video}" frameborder="0" allowfullscreen></iframe>
           <div class="countdown-box">
-            <button onclick="showAdThenDownload('${mod.download}', this)">⬇️ Download MOD</button>
+            <button onclick="showAdThenDownload('${mod.download}', this)">⬇️ Download MOD</button><script>
+  window.onload = () => {
+    // ⏳ Exibe o anúncio assim que a página carregar
+    ads.ad_show({
+      adBlockUuid: "61ddc324-19c8-4c7b-a123-e9754adecf08"
+    });
+
+    // ⬇️ Aqui continua seu código normal (contagem, download, etc.)
+  };
+</script>
           </div>
         </section>`;
     }
