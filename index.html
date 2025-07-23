@@ -177,6 +177,25 @@ ads.ad_show({
     .countdown-box button { background: #28a745; color: white; border: none; padding: 10px 20px; font-size: 1em; border-radius: 5px; cursor: pointer; }
     .countdown-box button:disabled { background: #ccc; cursor: not-allowed; }
   </style>
-  
+  <script>
+  // Função para exibir o interstitial
+  function showInterstitialAd() {
+    show_9590572({
+      type: 'inApp',
+      inAppSettings: {
+        frequency: 2,
+        capping: 0.1,
+        interval: 30,
+        timeout: 5,
+        everyPage: false
+      }
+    });
+  }
+
+  // Chamada automática após o carregamento da página
+  window.addEventListener('DOMContentLoaded', () => {
+    showInterstitialAd();
+  });
+  </script>
 </body>
 </html>
