@@ -3,183 +3,66 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HilGaming MODs</title>
   <link rel="stylesheet" href="style.css" />
+  
+  <!-- Telegram + Ads SDKs -->
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
   <script src='//libtl.com/sdk.js' data-zone='9590572' data-sdk='show_9590572'></script>
-<script src="https://ads.telega.io/ads.js"></script>
-          <script src="https://richinfo.co/richpartners/telegram/js/tg-ob.js"></script>
-          <script>
-            window.TelegramAdsController = new TelegramAdsController();
-            window.TelegramAdsController.initialize({
-              pubId: "960688",
-              appId: "2901",
-            });
-          </script>
   <script src="https://ads.telega.io/ads.js"></script>
-  <script async src="https://partner.adextra.io/jt/6f5b84b7922e6f59523b0c0daf6abcee4674a5ae.js"></script>
-</head>
-<body>
-  <script src="https://inapp.telega.io/sdk/v1/sdk.js"></script>
+  <script src="https://richinfo.co/richpartners/telegram/js/tg-ob.js"></script>
   <script>
-    const ads = window.TelegaIn.AdsController.create_miniapp({
-      token: '9b1e446b-5af2-4051-b66d-d4ceeca10a62'
+    window.TelegramAdsController = new TelegramAdsController();
+    window.TelegramAdsController.initialize({
+      pubId: "960688",
+      appId: "2901",
     });
   </script>
-<script async src="https://partner.adextra.io/jt/3c094a768d23077dfdfaa7e4792391618f524258.js"></script>
+  <script src="https://inapp.telega.io/sdk/v1/sdk.js"></script>
+</head>
+<body>
   <header>
     <h1>HilGaming MODs</h1>
     <input type="text" id="search" placeholder="Search for mods or paste the ID...">
   </header>
 
-<main id="posts"></main>
+  <!-- Onde os posts vão aparecer -->
+  <main id="posts"></main>
+
   <script>
+    const ads = window.TelegaIn.AdsController.create_miniapp({
+      token: '9b1e446b-5af2-4051-b66d-d4ceeca10a62'
+    });
+
+    // Lista de mods
     const mods = [
       {
-  "title": "FIFA 16 Mod FC26 | Barcelona vs Real Madrid FULL Facepack Update | New 25/26 Player Faces! ID-5555",
-  "images": [
-    "https://i.postimg.cc/Pr2498XH/Screenshot-20250815-150636-You-Tube.png",
-    "https://i.postimg.cc/L6HDxVMv/Screenshot-20250815-150714-You-Tube.png",
-    "https://i.postimg.cc/jq6v6FBL/Screenshot-20250815-150657-You-Tube.png"
-  ],
-  "video": "",
-  "download": "https://dl.surf/file/99a4eece"    
-      },
-      {
-  "title": "eFOOTBALL PES 2025 Mobile Android Patch UCL 4.5.0 Best Graphics Update 25/2026 ID-0986",
-  "images": [
-    "https://i.postimg.cc/dQTkBtvt/5805309021589196519-121.jpg",
-    "https://i.postimg.cc/cHPKSP7S/photo-2025-05-01-12-30-48.webp",
-    "https://i.postimg.cc/dt2hbHLb/Screenshot-20250812-124131-You-Tube.png"
-  ],
-  "video": "",
-  "download": "https://sharemods.com/q2ogbe27ije8/Patch_Cr7_efootball_25_Mobile_Update_v4.5.1.zip.html#google_vignette"
-      },
-      {
-  "title": "EA SPORTS FC MOBILE 2026 UPDATE | FOR ANDROID | FC 26 FIFA 16 | OFFLINE 👍 ID-4321",
-  "images": [
-    "https://i.postimg.cc/Mpg8ddy2/Screenshot-20250811-155831-You-Tube.png",
-    "https://i.postimg.cc/pdgX5P0j/Screenshot-20250811-152129-You-Tube.png",
-    "https://i.postimg.cc/qRyB8WY5/Screenshot-20250811-152157-You-Tube.png"
-  ],
-  "video": "",
-  "download": "https://www.mediafire.com/file/rxpy15ez2bpjplw/FC_MOBILE_BY_BOB_JOE_GAMING.zip/file"
-      },
-      {
-  "title": "FC 26 Mod FIFA 16 Android Mobile Offline PS5 MOD [Apk+OBB+Data] Best Graphics ID 2355",
-  "images": [
-    "https://i.postimg.cc/MTbvmwvh/Screenshot-20250804-124612-You-Tube.png",
-    "https://i.postimg.cc/d1KhC3t2/Screenshot-20250804-124624-You-Tube.png",
-    "https://i.postimg.cc/1RrqpGFf/Screenshot-20250804-124912-You-Tube.png"
-  ],
-  "video": "",
-  "download": "https://www.pngames7.com/2025/08/fc-26-mod-fifa-16-android-mobile.html?m=1"
-        },
-      {
-  "title": "💥FTS 26 MOBILE🎮 MOD EA SPORTS FC 26 OFFLINE | KITS 25/2026✨️ | ALL TOURNAMENTS FIFPRO FTG ID 2345",
-  "images": [
-    "https://i.postimg.cc/fyPVb33C/20250801-223835.png",
-    "https://i.postimg.cc/j22WK6jC/Video-Capture-20250802-141506.jpg",
-    "https://i.postimg.cc/LXNqrQ2r/Video-Capture-20250802-141539.jpg"
-  ],
-  "video": "https://www.youtube.com/embed/fcQN10dljM8?autoplay=1&mute=1",
-  "download": "https://www.mediafire.com/file/k7ubw4i6tjbooxm/FTS_mod_EA_FC_26_New_Transfer_Update.zip/file"
-    },
-      {
-  "title": "FIFA 16 MOD EA SPORTS FC 26 ANDROID OFFLINE CAREER MODE 🎮 ID 1345",
-  "images": [
-    "https://i.postimg.cc/Z5P0LCb2/Screenshot-20250728-101006-You-Tube.png",
-    "https://i.postimg.cc/9XS4m6g8/Screenshot-20250728-101143-You-Tube.png",
-    "https://i.postimg.cc/T3vpmr6n/Screenshot-20250728-101306-You-Tube.png"
-  ],
-  "video": "",
-  "download": "https://www.mediafire.com/file/lc8jf6uthg1w9bb/com.ea.gp.fifaworld.zip/file?fbclid=IwY2xjawI7MYNleHRuA2FlbQIxMQABHbU-5noqiTcJ1N9ssE9Uh7NSoY7HI8cWEb5u-pXjVkfrTTREhrh57Y8AOA_aem_LfpHUO72eAiWNvwMmvkB8g"
-      },
-      {
-  "title": "EA SPORTS FC 25 MOBILE Update Real Face, Kits, Latest Transfer & Camera PS5 HD! ID 3245",
-  "images": [
-    "https://i.postimg.cc/CLDZLHzy/Screenshot-20250726-112803-You-Tube.png",
-    "https://i.postimg.cc/fk4hrdNm/Screenshot-20250726-112832-You-Tube.png",
-    "https://i.postimg.cc/P5TqXggZ/Screenshot-20250726-113013-You-Tube.png"
-  ],
-  "video": "",
-  "download": "https://www.mediafire.com/file/e9ydgqfzyuri7z2/SC_PLAY_ON_YOUTUBE_FIFA_25_DATA_1_.7z/file"
-      },
-      {
-  "title": "FIFA16 MOD EA SPORTS FC 26 ANDROID OFFLINE CAREER MODE",
-  "images": [
-    "https://i.postimg.cc/cLYG02vZ/Screenshot-20250723-195542-You-Tube.png",
-    "https://i.postimg.cc/yNyqSRhb/Screenshot-20250723-195748-You-Tube.png",
-    "https://i.postimg.cc/jjb05cff/Screenshot-20250723-195930-You-Tube.png"
-  ],
-  "video": "https://www.youtube.com/embed/-l7JR1g94kM?autoplay=1&mute=1",
-  "download": "https://gplinks.co/JfFsglXZ"
-    },
-      {
-  title: "FIFA 15 ANDROID OFFLINE CAREER MODE ALL TOURNAMENTS",
-  images: [
-    "https://i.postimg.cc/xTcnkzVg/Screenshot-20250723-083649-You-Tube.png",
-    "https://i.postimg.cc/hv3nyST9/Screenshot-20250723-083756-You-Tube.png",
-    "https://i.postimg.cc/nVdnc1gC/Screenshot-20250723-083947-You-Tube.png"
-  ],
-  video: "https://www.youtube.com/embed/knKkU_Nf-oA?autoplay=1&mute=1",
-  download: "https://www.mediafire.com/file/3gs8fqa0f3dyoy1/FIFA+15+MOD+FIFA+16+ANDROID.zip/file?dkey=nvuyw4pabcr&r=785"
-      },
-      {
-  title: "FIFA 16 NEW FACEPACK 25/26 UPDATE | Some Super Big Teams Player Faces New Look & Latest Transfers DB",
-  images: [
-    "https://i.postimg.cc/y85Bzypc/Screenshot-20250722-125700-You-Tube.png",
-    "https://i.postimg.cc/TYtft6rk/Screenshot-20250722-125709-You-Tube.png",
-    "https://i.postimg.cc/K84FVHfm/Screenshot-20250722-125742-You-Tube.png"
-  ],
-  video: "https://www.youtube.com/embed/PDTvT_6XqDE?autoplay=1&mute=1",
-  download: "https://www.mediafire.com/file/5v9us5fm9hnr07f/WALMOH_FIFA16_Facepack_25-26.7z/file?hash=IkRe0ImzweOAIkyuCdYosp9BarHItY7X9LgrDMGXZFNGC5OpYzTnCvoZUZQx5TEp"
-      },
-      {
-  title: "FIFA 16 MOD FC 25 APK OBB DATA MEDIAFIRE DOWNLOAD",
-  images: [
-    "https://i.postimg.cc/pTzHdFmy/Screenshot-20250724-132625-You-Tube.png",
-    "https://i.postimg.cc/c4ymVzbc/Screenshot-20250716-191219-You-Tube.png",
-    "https://i.postimg.cc/59FgKJn0/Screenshot-20250716-191451-You-Tube.png"
-  ],
-  video: "https://www.youtube.com/embed/jokudb9BguE?autoplay=1&mute=1",
-  download: "https://gplinks.co/3MGOixa"
-      },
-      {
-        title: "Efootball 26 MOD FIFA 16",
-        images: [
-          "https://i.postimg.cc/fyHXpR7p/Screenshot-20250715-113322-You-Tube.png",
-          "https://i.postimg.cc/tCTFPFpj/Screenshot-20250715-112918-You-Tube.png",
-          "https://i.postimg.cc/v8XWc0Rh/Screenshot-20250715-112855-You-Tube.png"
+        "title": "FC 26 Mod FIFA 16 Android Mobile",
+        "images": [
+          "https://i.postimg.cc/MTbvmwvh/Screenshot-20250804-124612-You-Tube.png",
+          "https://i.postimg.cc/d1KhC3t2/Screenshot-20250804-124624-You-Tube.png"
         ],
-        video: "https://www.youtube.com/embed/N7UE9TwTYLc?autoplay=1&mute=1",
-        download: "https://gplinks.co/Efootball26"
+        "video": "",
+        "downloads": [
+          { "label": "📱 APK", "url": "https://example.com/apk" },
+          { "label": "📂 OBB", "url": "https://example.com/obb" },
+          { "label": "💾 DATA", "url": "https://example.com/data" }
+        ]
       },
       {
-        title: "FTS 25 MOD EA SPORTS FC MOBILE",
-        images: [
-          "https://i.postimg.cc/sg47f4FR/Video-Capture-20250714-150756.jpg",
-          "https://i.postimg.cc/rFW53LQs/Video-Capture-20250714-150747.jpg",
-          "https://i.postimg.cc/440KXFmc/20250713-182955.png"
+        "title": "💥FTS 26 MOBILE🎮 MOD EA SPORTS FC 26 OFFLINE",
+        "images": [
+          "https://i.postimg.cc/fyPVb33C/20250801-223835.png",
+          "https://i.postimg.cc/j22WK6jC/Video-Capture-20250802-141506.jpg"
         ],
-        video: "https://www.youtube.com/embed/QtL4rI23zEc?autoplay=1&mute=1",
-        download: "https://gplinks.co/a0DVSR"
-      },
-      {
-        title: "FIFA 16 MOD UFL 26 ANDROID",
-        images: [
-          "https://i.postimg.cc/MGc1Khn1/Screenshot-20250713-170107-You-Tube.png",
-          "https://i.postimg.cc/YCC1T4kn/Screenshot-20250713-170045-You-Tube.png",
-          "https://i.postimg.cc/9FpdxP3w/Screenshot-20250713-165954-You-Tube.png"
-        ],
-        video: "https://www.youtube.com/embed/mPhT1b5a2kE?autoplay=1&mute=1",
-        download: "https://gplinks.co/diwehZ"
+        "video": "https://www.youtube.com/embed/fcQN10dljM8?autoplay=1&mute=1",
+        "download": "https://www.mediafire.com/file/k7ubw4i6tjbooxm/FTS_mod_EA_FC_26_New_Transfer_Update.zip/file"
       }
     ];
-ads.ad_show({
-  adBlockUuid: "61ddc324-19c8-4c7b-a123-e9754adecf08"
-});
+
     const container = document.getElementById('posts');
 
+    // Cria cada post
     function createPost(mod) {
       return `
         <section class="post">
@@ -187,32 +70,50 @@ ads.ad_show({
           <div class="slideshow">
             ${mod.images.map(img => `<img src="${img}" alt="${mod.title}">`).join('')}
           </div>
-          <iframe src="${mod.video}" frameborder="0" allowfullscreen></iframe>
-          <div class="countdown-box">
-            <button onclick="showAdThenDownload('${mod.download}', this)">⬇️ Download MOD</button>
+          ${mod.video ? `<iframe src="${mod.video}" frameborder="0" allowfullscreen></iframe>` : ""}
+          <div class="downloads">
+            ${
+              mod.downloads
+              ? mod.downloads.map(d => `
+                  <button onclick="showAdThenDownload('${d.url}', this)">
+                    ⬇️ Download ${d.label}
+                  </button>
+                `).join('')
+              : `<button onclick="showAdThenDownload('${mod.download}', this)">⬇️ Download MOD</button>`
+            }
           </div>
         </section>`;
     }
 
+    // Carrega todos os posts
     function loadPosts() {
       container.innerHTML = mods.map(createPost).join('');
     }
 
+    // Mostra anúncio e depois libera download
     function showAdThenDownload(url, btn) {
       btn.disabled = true;
       btn.textContent = "⏳ Watching ad...";
-      show_9590572().then(() => {
-        alert("✅ Ad completed! Download link unlocked.");
+
+      if (typeof show_9590572 !== "undefined") {
+        show_9590572().then(() => {
+          alert("✅ Ad completed! Download link unlocked.");
+          window.open(url, '_blank');
+        }).catch(() => {
+          alert("⚠️ You must watch the full ad to unlock the link.");
+        }).finally(() => {
+          btn.textContent = "⬇️ Download";
+          btn.disabled = false;
+        });
+      } else {
+        alert("⚠️ Ad service not available, opening download directly...");
         window.open(url, '_blank');
-        btn.textContent = "⬇️ Download MOD";
+        btn.textContent = "⬇️ Download";
         btn.disabled = false;
-      }).catch(() => {
-        alert("⚠️ You must watch the full ad to unlock the link.");
-        btn.textContent = "⬇️ Download MOD";
-        btn.disabled = false;
-      });
+      }
     }
 
+    // Pesquisa
     document.getElementById('search').addEventListener('input', function () {
       const q = this.value.toLowerCase();
       const filtered = mods.filter(m => m.title.toLowerCase().includes(q));
@@ -222,39 +123,18 @@ ads.ad_show({
     Telegram.WebApp.expand();
     loadPosts();
   </script>
-ads.ad_show({
-  adBlockUuid: "61ddc324-19c8-4c7b-a123-e9754adecf08"
-});
+
   <style>
     body { font-family: sans-serif; margin: 0; background: #f4f4f4; color: #333; }
     header { padding: 1em; background: #111; color: #fff; text-align: center; }
-    input[type="text"] { width: 90%; padding: 0.5em; margin-top: 0.5em; border-radius: 5px; border: none; }
-    .post { background: white; margin: 1em; padding: 1em; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-    .slideshow img { width: 100%; margin-bottom: 0.5em; border-radius: 5px; }
-    iframe { width: 100%; height: 200px; margin-top: 10px; border-radius: 5px; }
-    .countdown-box { text-align: center; margin-top: 1em; }
-    .countdown-box button { background: #28a745; color: white; border: none; padding: 10px 20px; font-size: 1em; border-radius: 5px; cursor: pointer; }
-    .countdown-box button:disabled { background: #ccc; cursor: not-allowed; }
+    header input { padding: 0.5em; width: 90%; margin-top: 10px; border-radius: 6px; border: none; }
+    main { padding: 1em; }
+    .post { background: #fff; margin: 1em 0; padding: 1em; border-radius: 10px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
+    .slideshow img { width: 100%; border-radius: 8px; margin: 0.5em 0; }
+    iframe { width: 100%; height: 200px; border-radius: 8px; margin-top: 10px; }
+    .downloads { margin-top: 10px; display: flex; flex-wrap: wrap; gap: 10px; }
+    button { background: #111; color: #fff; padding: 0.7em 1em; border: none; border-radius: 6px; cursor: pointer; }
+    button:disabled { background: #777; }
   </style>
-  <script>
-  // Função para exibir o interstitial
-  function showInterstitialAd() {
-    show_9590572({
-      type: 'inApp',
-      inAppSettings: {
-        frequency: 2,
-        capping: 0.3,
-        interval: 30,
-        timeout: 5,
-        everyPage: false
-      }
-    });
-  }
-
-  // Chamada automática após o carregamento da página
-  window.addEventListener('DOMContentLoaded', () => {
-    showInterstitialAd();
-  });
-  </script>
 </body>
 </html>
