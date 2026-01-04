@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>FTS & PES Mobile Mods | Ultimate Hub</title>
+    <meta name="description" content="Download the best Android Football Mods (FTS, PES, DLS). Updated daily with latest kits and transfers.">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+
+    <script src='//libtl.com/sdk.js' data-zone='9590572' data-sdk='show_9590572'></script>
+</head>
+<body>
+
+    <div id="app-loader" class="loader-container">
+        <div class="spinner"></div>
+        <p>Loading Mods...</p>
+    </div>
+
+    <header class="app-header">
+        <div class="logo">
+            <i class="fa-solid fa-gamepad"></i> MODS<span>HUB</span>
+        </div>
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search Mod or ID...">
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+    </header>
+
+    <main id="main-container">
+        <section id="home-view" class="view active">
+            <h2 class="section-title">Latest Releases</h2>
+            <div id="mods-grid" class="grid-container">
+                </div>
+        </section>
+
+        <section id="details-view" class="view hidden">
+            <button id="back-btn" class="nav-btn"><i class="fa-solid fa-arrow-left"></i> Back</button>
+            
+            <div id="mod-content" class="mod-detail-container">
+                </div>
+        </section>
+    </main>
+
+    <div id="toast" class="toast hidden"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
