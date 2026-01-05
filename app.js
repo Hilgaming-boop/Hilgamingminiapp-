@@ -80,7 +80,7 @@ function renderMods(mods) {
         // Lógica da Etiqueta (Badge)
         let badgeHtml = '';
         if (mod.tag) {
-            // Se a tag for "NOVO", usa a classe .novo, senão usa .hot
+            // Se a tag for "NEW", usa a classe .new, senão usa .hot
             const tagClass = mod.tag.toUpperCase() === 'NEW' ? 'new' : 'hot';
             badgeHtml = `<span class="badge ${tagClass}">${mod.tag}</span>`;
         }
