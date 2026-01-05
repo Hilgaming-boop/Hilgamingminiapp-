@@ -15,8 +15,8 @@
     { "label": "💾 DATA (Manager Mode)", "url": "https://www.mediafire.com/file/6txnsut6ofsn2e0/..." }
 ]
 },
-    {
-    "title": "FIFA 16 Mod FC 26 – Latest Full Update | ID-0021",
+        {
+    "title": "FIFA 16 Mod FC 26 – Latest Full Update | ID-003",
       "tag": "NEW",
     "images": [
       "https://i.postimg.cc/90v5yB3J/Screenshot_20251130_194908_You_Tube.png",
@@ -35,8 +35,31 @@
       },
       { 
         "label": "💾 DATA File", 
-        "url": "https://www.mediafire.com/file/90siv8pxkchlfoo/FIFA_16_DATA_BY_ALPHATRIX_GAMING.zip/file" }
-      
+        "url": "https://www.mediafire.com/file/90siv8pxkchlfoo/FIFA_16_DATA_BY_ALPHATRIX_GAMING.zip/file" 
+      }
     ]
-    }
+  },
+  {
+    "title": "FTS 24 Mobile | ID-0001",
+    "images": [
+      "https://via.placeholder.com/600x338/0f0/fff?text=FTS+24+Menu",
+      "https://via.placeholder.com/600x338/000/fff?text=Gameplay"
+    ],
+    "video": "https://youtube.com/watch?v=dQw4w9WgXcQ",
+    "downloads": [
+      { "label": "📱 APK (200MB)", "url": "https://example.com/apk" },
+      { "label": "💾 DATA (100MB)", "url": "https://example.com/data" },
+      { "label": "📁 OBB (150MB)", "url": "https://example.com/obb" }
+    ]
+  },
+  {
+    "title": "eFootball Patch v5.0 | ID-0002",
+    "images": [
+      "https://via.placeholder.com/600x338/00f/fff?text=eFootball+Patch"
+    ],
+    "video": "https://youtube.com/watch?v=abcdefgh",
+    "downloads": [
+      { "label": "📱 Mega Link", "url": "https://mega.nz/..." }
+    ]
+  }
 ]
