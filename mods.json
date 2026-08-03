@@ -1,4 +1,38 @@
 [
+      {
+    "title": "PES 18 Mobile – Last Update | Campaign Mode & New Teams",
+    "tag": "PES 18",
+    "description": "Download the latest PES 18 Mobile update with improved Campaign Mode, new teams, realistic difficulty and licensed kits!",
+    "features": [
+      "Updated Campaign Mode",
+      "New Teams Available",
+      "Increased Realism & Difficulty",
+      "Licensed Kits Patch",
+      "Missing Players Fix Included"
+    ],
+    "images": [
+      "https://i.postimg.cc/CKx5ChnS/20260803-225728.png",
+      "https://i.postimg.cc/ZY8mRk02/1.jpg",
+      "https://i.postimg.cc/pVfvTNy7/2.jpg",
+      "https://i.postimg.cc/59BJ0cjg/3.jpg",
+      "https://i.postimg.cc/59BJ0cjn/4.jpg",
+      "https://i.postimg.cc/WpGV3Rty/5.jpg",
+      "https://i.postimg.cc/wxXzvK3F/6.jpg"
+    ],
+    "video": "https://youtu.be/1Bf0372l01k",
+    "instructions": "1. Baixe o APK e a pasta OBB nos links abaixo.\n2. Instale o arquivo APK no seu dispositivo Android.\n3. Extraia o conteúdo da OBB para a pasta Android/obb/.\n\n⚙️ COMO CORRIGIR JOGADORES AUSENTES (MISSING PLAYERS):\nSe ao entrar no jogo notar algum jogador faltando na escalação:\n1. Abra o menu de Gerenciamento do Time / Elenco.\n2. Mova qualquer jogador disponível para a posição vazia.\n3. Salve as alterações da sua equipe.\n4. Repita este procedimento sempre que iniciar o jogo.",
+    "downloads": [
+      { 
+        "label": "📱 DOWNLOAD APK (PES 18)", 
+        "url": "https://www.mediafire.com/file/3tqycia70sq4mgw/NYAN2018jp.nyan.pesamv2.3.3_src.apk/file" 
+      },
+      { 
+        "label": "📁 DOWNLOAD OBB (Turco Patch)", 
+        "url": "https://www.mediafire.com/file/he2sggscfkh3t0r/jp.nyan.pesam_obb_turco.zip/file" 
+      }
+    ]
+      }
+    ,
     {
     "title": "FIFA 16™ MOBILE MOD FC 26 – World Cup 2026 Edition",
     "tag": "WORLD CUP",
