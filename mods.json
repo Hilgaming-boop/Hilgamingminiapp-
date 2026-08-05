@@ -1,8 +1,8 @@
 [
         {
-    "title": "PES 21 Mobile Offline – First Gameplay & Trial Version",
-    "tag": "PES 21 TRIAL",
-    "description": "First gameplay release of PES 21 Mobile Offline! Note: This is a trial version. The full version will be released soon.",
+    "title": "PES 21 Mobile Offline – First Gameplay & Complete version",
+    "tag": "PES 21 Full version",
+    "description": "First gameplay release of PES 21 Mobile Offline! Note: This is the complete version. ",
     "features": [
       "PES 21 Engine Offline",
       "First Gameplay Release",
@@ -10,22 +10,22 @@
       "Improved Visuals & Physics"
     ],
     "images": [
-      "https://i.postimg.cc/kGq0VDRf/IMG-20260804-220635.jpg",
+      "https://i.postimg.cc/bv6VCWkz/IMG-20260805-222257.jpg",
       "https://i.postimg.cc/hvckJhQs/IMG-20260804-220647.jpg",
       "https://i.postimg.cc/tJpK17nd/IMG-20260804-220657.jpg",
       "https://i.postimg.cc/4ysDKnH6/IMG-20260804-220711.jpg",
       "https://i.postimg.cc/QCh2BVKW/IMG-20260804-220727.jpg",
       "https://i.postimg.cc/4d6CNpyz/IMG-20260804-220739.jpg"
     ],
-    "video": "https://youtu.be/y8VJHDyem4M",
+    "video": "https://youtu.be/WwhQaCX2htw",
     "instructions": "1. 1. Download the APK and OBB files.\n2. Extract the contents of the downloaded files.\n3. Copy the OBB folder to the directory: Android/obb/.\n4. Install the APK on your device.\n5. Open the game and test the version. 
       { 
         "label": "📁 DOWNLOAD OBB FILE (MediaFire)", 
-        "url": "https://www.mediafire.com/file/zh2itqhe0xoln7x/jp.nyan2021.pesam.zip/file" 
+        "url": "https://gofile.io/d/joB29j" 
       },
       { 
         "label": "📱 DOWNLOAD APK FILE (GoFile)", 
-        "url": "https://gofile.io/d/1KiJYy" 
+        "url": "https://gofile.io/d/JnOmsG" 
       }
     ]
         }
