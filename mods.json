@@ -1,13 +1,13 @@
 [
-        {
-    "title": "PES 21 Mobile Offline – First Gameplay & Complete version",
-    "tag": "PES 21 Full version",
-    "description": "First gameplay release of PES 21 Mobile Offline! Note: This is the complete version. ",
+          {
+    "title": "PES 21 Mobile Offline – Full Version | Smooth Gameplay & No Crash",
+    "tag": "PES 21 FULL",
+    "description": "Full version of PES 21 Mobile Offline is finally available! Enjoy smooth gameplay with no crashes.",
     "features": [
-      "PES 21 Engine Offline",
-      "First Gameplay Release",
-      "Trial / Beta Version",
-      "Improved Visuals & Physics"
+      "Full Version Released",
+      "Smooth Gameplay",
+      "No Crash Fix",
+      "PES 21 Engine Offline"
     ],
     "images": [
       "https://i.postimg.cc/bv6VCWkz/IMG-20260805-222257.jpg",
@@ -18,17 +18,19 @@
       "https://i.postimg.cc/4d6CNpyz/IMG-20260804-220739.jpg"
     ],
     "video": "https://youtu.be/WwhQaCX2htw",
-    "instructions": "1. 1. Download the APK and OBB files.\n2. Extract the contents of the downloaded files.\n3. Copy the OBB folder to the directory: Android/obb/.\n4. Install the APK on your device.\n5. Open the game and enjoy the Full version." 
-      { 
-        "label": "📁 DOWNLOAD OBB FILE (GoFile)", 
-        "url": "https://gofile.io/d/joB29j" 
-      },
+    "instructions": "1. Download both the APK and OBB files.\n2. Extract the downloaded files using a file manager (like ZArchiver).\n3. Move the OBB folder to Android/obb/.\n4. Install the APK file.\n5. Launch the game and enjoy the full version without crashes!",
+    "downloads": [
       { 
         "label": "📱 DOWNLOAD APK FILE (GoFile)", 
         "url": "https://gofile.io/d/JnOmsG" 
+      },
+      { 
+        "label": "📁 DOWNLOAD OBB FILE (GoFile)", 
+        "url": "https://gofile.io/d/joB29j" 
       }
-]
-        }
+    ]
+  }
+
       ,
       {
     "title": "PES 18 Mobile – Last Update | Campaign Mode & New Teams",
