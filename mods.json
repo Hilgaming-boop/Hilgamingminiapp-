@@ -1,4 +1,48 @@
 [
+              {
+    "title": "FIFA 16 Mod FC 27™ – New Transfers, Save Mode & HD Graphics",
+    "tag": "FC 27",
+    "description": "Download FIFA 16 Mod FC 27™ featuring the latest transfers, Save Mode, high-definition graphics, optional faces/kits, and full commentary!",
+    "features": [
+      "New 2026/27 Transfers",
+      "Save Mode Included",
+      "HD Graphics",
+      "Optional Lite Kits & Faces",
+      "Commentary Support"
+    ],
+    "images": [
+      "https://i.postimg.cc/qRvRfJ7v/20260831-091631.png",
+      "https://i.postimg.cc/5020c4t1/Screenshot-2026-08-31-08-34-13-271-com-miui-mediaviewer.jpg",
+      "https://i.postimg.cc/mDgDxLrG/Screenshot-2026-08-31-08-34-22-686-com-miui-mediaviewer.jpg",
+      "https://i.postimg.cc/26S6pk5r/Screenshot-2026-08-31-08-34-51-809-com-miui-mediaviewer.jpg",
+      "https://i.postimg.cc/4d23sDKZ/Screenshot-2026-08-31-08-35-11-226-com-miui-mediaviewer.jpg"
+    ],
+    "video": "https://youtu.be/YreRV_DJarI",
+    "instructions": "1. Download the APK, OBB, and DATA files.\n2. Install the APK on your Android device.\n3. Extract the OBB zip file and copy the folder to Android/obb/.\n4. Extract the DATA zip file and copy the folder to Android/data/.\n5. (Optional) Extract and copy the Faces/Kits (Sceneassets) and Commentary files to their respective paths in Android/data/.\n6. Launch the game and enjoy!",
+    "downloads": [
+      { 
+        "label": "📱 DOWNLOAD APK FILE", 
+        "url": "https://www.mediafire.com/file/q6hsixhuepjgfuv/FC_MOBILE.apk/file" 
+      },
+      { 
+        "label": "📁 DOWNLOAD OBB FILE (Alphatrix Gaming)", 
+        "url": "https://www.mediafire.com/file/ycxkoqne89x35zh/FIFA_16_OBB_BY_ALPHATRIX_GAMING.zip/file" 
+      },
+      { 
+        "label": "💾 DOWNLOAD DATA FILE (Alphatrix Gaming)", 
+        "url": "https://www.mediafire.com/file/v3xr3oixhbpyq5k/%255BFC26_%255D_DATA_FILE_by_alphatrix.zip/file" 
+      },
+      { 
+        "label": "🎭 OPTIONAL: FACES & KITS SCENEASSETS (Season 26-27)", 
+        "url": "https://www.mediafire.com/file/6itdw9fw154siuu/LITE_VERSION_SCENEASSETS_FC__SEASON_26-27_BY_ALPHATRIX_GAMING.zip/file" 
+      },
+      { 
+        "label": "🎙️ OPTIONAL: COMMENTARY PACK (Alphatrix Gaming)", 
+        "url": "https://www.mediafire.com/file/gv5ifkbvnplkgyn/EA+SPORTS+FC+26+COMMENTARY+BY+ALPHATRIX+GAMING.zip/file" 
+      }
+    ]
+              }
+            ,
             {
     "title": "PES 21 Mobile Offline UCL Patch 2026 – Legends, Maradona & Smooth Gameplay",
     "tag": "UCL PATCH",
