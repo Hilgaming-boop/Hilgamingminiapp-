@@ -1,4 +1,36 @@
-[
+[  {
+    "title": "PES 2021 Mobile Offline – Player Career Mode",
+    "tag": "CAREER MODE",
+    "description": "Download PES 2021 Mobile Offline featuring the highly anticipated Player Career Mode! Enjoy classic eFootball PES 2021 gameplay entirely offline on your Android device.",
+    "features": [
+      "Player Career Mode",
+      "Full Offline Gameplay",
+      "Updated Rosters & UI",
+      "Smooth Controls & Engine"
+    ],
+    "images": [
+      "https://i.postimg.cc/ry0sZmcY/20261011-194908.jpg",
+      "https://i.postimg.cc/nMb60TZG/Screenshot-2026-10-11-19-46-41-382-jp-Lordzgaming-pesam.jpg",
+      "https://i.postimg.cc/RC6hpF9k/Screenshot-2026-10-11-19-58-06-878-jp-Lordzgaming-pesam.jpg",
+      "https://i.postimg.cc/bYDrVJ8K/Screenshot-2026-10-11-19-58-14-527-jp-Lordzgaming-pesam.jpg",
+      "https://i.postimg.cc/NG9FCMYC/Screenshot-2026-10-11-19-58-36-670-jp-Lordzgaming-pesam.jpg",
+      "https://i.postimg.cc/Y2G0D9kZ/Screenshot-2026-10-11-19-58-56-881-jp-Lordzgaming-pesam.jpg",
+      "https://i.postimg.cc/9XR0gMVS/Screenshot-2026-10-11-19-59-29-056-jp-Lordzgaming-pesam.jpg"
+    ],
+    "video": "https://youtu.be/pwuQweWLGM4",
+    "instructions": "1. Extract all necessary downloaded files.\n2. Move the OBB folder/file to the Android/obb/ directory.\n3. Install the APK file on your Android device.\n4. Launch the game and start your Player Career journey!",
+    "downloads": [
+      { 
+        "label": "📱 DOWNLOAD APK FILE (ModsFire)", 
+        "url": "https://modsfire.com/O4jGp74HaarBWdz" 
+      },
+      { 
+        "label": "📁 DOWNLOAD OBB FILE (MediaFire)", 
+        "url": "https://www.mediafire.com/file/gmhiprx33y4gj1l/jp.Lordzgaming.pesam.zip/file" 
+      }
+    ]
+  }
+,
     {
     "title": "FIFA 16 MOD FC 27 – New Menu & Career Mode | HD Graphics",
     "tag": "FC 27 CAREER",
