@@ -1,4 +1,49 @@
-[     {
+[    
+    {
+    "title": "FIFA 16 Mobile Mod FC 27 Offline – Auto Save, Tournaments & Career Mode",
+    "tag": "FC 27",
+    "description": "Download FIFA 16 Mobile Mod FC 27 Offline featuring the Auto Save feature, updated tournaments, Career Mode, and optional Lite or Full sceneassets packages!",
+    "features": [
+      "Auto Save Feature Enabled",
+      "Tournaments & Career Mode",
+      "Updated FC 27 Squads & Rosters",
+      "Optional Lite & Full Sceneassets"
+    ],
+    "images": [
+      "https://i.postimg.cc/vmzmxPhc/20261013-230027.jpg",
+      "https://i.postimg.cc/gJ22Vvtv/Screenshot-2026-10-13-20-29-34-114-com-google-android-youtube.jpg",
+      "https://i.postimg.cc/vBZZrW2n/Screenshot-2026-10-13-23-07-20-266-com-ea-gp-fifaworld.jpg",
+      "https://i.postimg.cc/cHLLRQk8/Screenshot-2026-10-13-23-08-00-472-com-ea-gp-fifaworld.jpg",
+      "https://i.postimg.cc/mDggYQp7/Screenshot-2026-10-13-23-08-09-375-com-ea-gp-fifaworld.jpg",
+      "https://i.postimg.cc/W311GMYb/Screenshot-2026-10-13-23-08-35-490-com-ea-gp-fifaworld.jpg"
+    ],
+    "video": "https://youtu.be/yzL4w0qO1dc",
+    "instructions": "1. Download the APK, OBB, and DATA files.\n2. Install the APK file on your Android device.\n3. Extract the OBB archive and move the folder to Android/obb/.\n4. Extract the DATA archive and move the folder to Android/data/.\n5. (Optional) Download and extract either the Lite or Full version of the Faces/Kits (Sceneassets) into Android/data/.\n6. Launch the game and enjoy offline career mode with auto save!",
+    "downloads": [
+      { 
+        "label": "📱 DOWNLOAD APK FILE (ModsFire)", 
+        "url": "https://modsfire.com/jLS5cXY13gLORG8" 
+      },
+      { 
+        "label": "📁 DOWNLOAD OBB FILE (Alphatrix Gaming)", 
+        "url": "https://www.mediafire.com/file/ycxkoqne89x35zh/FIFA_16_OBB_BY_ALPHATRIX_GAMING.zip/file" 
+      },
+      { 
+        "label": "💾 DOWNLOAD DATA FILE [V1.6] (Alphatrix)", 
+        "url": "https://www.mediafire.com/file/jk1tc43rpye4ttz/%255BV1.6%255D_EAFC_27_by_alphatrix.zip/file" 
+      },
+      { 
+        "label": "🎭 OPTIONAL: FACES & KITS (Lite Version)", 
+        "url": "https://www.mediafire.com/file/1hi2r7e9gzp7ji6/LITE+VERSION+SCENEASSETS+FC++SEASON+26-27+by+alphatrix.zip/file" 
+      },
+      { 
+        "label": "🌟 OPTIONAL: FACES & KITS (Full Version)", 
+        "url": "https://www.mediafire.com/file/wtsqnhap00d2dxl/FULL_VERSION_SCENEASSETS_FC_SEASON_26-27_by_alphatrix.zip/file" 
+      }
+    ]
+  }
+, 
+   {
     "title": "FIFA 15 Mobile Offline Mod – Tournaments, New Balls & Stadiums",
     "tag": "FIFA 15",
     "description": "Download FIFA 15 Mobile Offline Mod featuring updated tournaments, new balls, custom stadiums, and classic mobile gameplay entirely offline!",
