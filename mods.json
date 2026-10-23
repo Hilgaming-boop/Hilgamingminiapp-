@@ -1,5 +1,37 @@
 [ 
     {
+    "title": "PES 2021 Mobile Offline – Master League, GOATs Pack & New Cameras",
+    "tag": "PES 21 ML",
+    "description": "Download the latest PES 2021 Mobile Offline update featuring Master League, exclusive GOATs packs, new camera angles, and smooth gameplay on Android.",
+    "features": [
+      "Master League Mode",
+      "GOATs Packs Included",
+      "New Camera Angles",
+      "Full Offline Gameplay"
+    ],
+    "images": [
+      "https://i.postimg.cc/L62jL040/1792767440285.jpg",
+      "https://i.postimg.cc/Nj0TP9H8/Screenshot-2026-10-23-16-39-25-503-com-livraz-pes2021.jpg",
+      "https://i.postimg.cc/nhL7wjDS/Screenshot-2026-10-23-16-39-42-659-com-livraz-pes2021.jpg",
+      "https://i.postimg.cc/htGx3zd4/Screenshot-2026-10-23-19-17-00-738-com-miui-mediaviewer.jpg",
+      "https://i.postimg.cc/3xwpb4vd/Screenshot-2026-10-23-19-17-26-865-com-miui-mediaviewer.jpg",
+      "https://i.postimg.cc/GhKGQJHC/Screenshot-2026-10-23-19-18-38-409-com-miui-mediaviewer.jpg"
+    ],
+    "video": "https://youtu.be/1nIHC4IQc-g",
+    "instructions": "1. Download both the APK and OBB files.\n2. Extract the files using a file manager (like ZArchiver).\n3. Move the OBB folder to the Android/obb/ directory.\n4. Install the APK file on your Android device.\n5. Launch the game and enjoy Master League offline!",
+    "downloads": [
+      { 
+        "label": "📱 DOWNLOAD APK FILE (ModsFire)", 
+        "url": "https://modsfire.com/download/A1nh8g2d56561I2/b44ad" 
+      },
+      { 
+        "label": "📁 DOWNLOAD OBB FILE (ModsFire)", 
+        "url": "https://modsfire.com/Ti7W3582Tq49bKR" 
+      }
+    ]
+  }
+,
+    {
     "title": "DFL 27 V1 – New Season Mode, Menus & More",
     "tag": "DFL 27",
     "description": "Download DFL 27 V1 featuring the brand new Season Mode, updated menus, enhanced graphics, and the latest mobile football modifications!",
