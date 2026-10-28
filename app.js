@@ -1,3 +1,5 @@
+
+
 /* =========================================
    GLOBAL STATE & CONFIG
    ========================================= */
@@ -82,7 +84,7 @@ function renderMods(mods) {
         if (mod.tag) {
             // Se a tag for "NEW", usa a classe .new, senão usa .hot
             const tagClass = mod.tag.toUpperCase() === 'NEW' ? 'new' : 'hot';
-            badgeHtml = <span class="badge ${tagClass}">${mod.tag}</span>;
+            badgeHtml = `<span class="badge ${tagClass}">${mod.tag}</span>`;
         }
 
         const card = document.createElement('div');
@@ -127,7 +129,7 @@ function openModDetails(mod) {
 
 function renderDetails(mod) {
     // 1. Galeria de Imagens
-    const imagesHtml = mod.images.map(img => <img src="${img}" class="slide-img" alt="Screenshot">).join('');
+    const imagesHtml = mod.images.map(img => `<img src="${img}" class="slide-img" alt="Screenshot">`).join('');
     
     // 2. Vídeo do YouTube (Tratamento de Link)
     let videoHtml = '';
@@ -217,7 +219,7 @@ function triggerInAppInterstitial() {
  * Rules: Must watch ad before download starts
  */
 window.handleMonetizedDownload = function(url, label) {
-    showToast(Preparing download for ${label}...);
+    showToast(`Preparing download for ${label}...`);
 
     if (isSdkReady()) {
         // Call the Rewarded Interstitial
