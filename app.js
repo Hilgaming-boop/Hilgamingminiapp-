@@ -1,706 +1,259 @@
-
 /* =========================================
-   HILGAMING MINI APP — OPTIMIZED JAVASCRIPT
-   Monetag + Catalog + Search + Mod Details
+   GLOBAL STATE & CONFIG
    ========================================= */
-
-"use strict";
-
-/* =========================================
-   1. CONFIGURATION
-   ========================================= */
-
-const CONFIG = {
-    jsonUrl: "./mods.json",
-
-    // Monetag: use the existing zone function.
-    adFunctionName: "show_9590572",
-
-    // In-App Interstitial configuration.
-    interstitial: {
-        frequency: 2,
-        capping: 0.5,  // 0.5 hours = 30 minutes
-        interval: 120, // Minimum interval: 120 seconds
-        timeout: 10,
-        everyPage: false
-    },
-
-    // Monetization policy:
-    // true = require Monetag's confirmed "valued" event.
-    requireConfirmedReward: true,
-
-    // false = do not automatically bypass a failed ad.
-    allowDirectDownloadOnAdFailure: false,
-
-    // Set to false if you do not want automatic interstitials.
-    enableInterstitial: true,
-
-    // Prevent excessively large catalog downloads.
-    requestTimeoutMs: 20000
-};
-
-/* =========================================
-   2. STATE & DOM
-   ========================================= */
-
 let allMods = [];
-let isLoadingMods = false;
-let interstitialInitialized = false;
-let activeDownload = false;
-let toastTimer = null;
+const JSON_URL = 'mods.json';
 
-const gridContainer = document.getElementById("mods-grid");
-const searchInput = document.getElementById("searchInput");
-const homeView = document.getElementById("home-view");
-const detailsView = document.getElementById("details-view");
-const loader = document.getElementById("app-loader");
-const backBtn = document.getElementById("back-btn");
-const modContent = document.getElementById("mod-content");
-const toast = document.getElementById("toast");
+// DOM Elements
+const gridContainer = document.getElementById('mods-grid');
+const searchInput = document.getElementById('searchInput');
+const homeView = document.getElementById('home-view');
+const detailsView = document.getElementById('details-view');
+const loader = document.getElementById('app-loader');
+const backBtn = document.getElementById('back-btn');
+const modContent = document.getElementById('mod-content');
 
 /* =========================================
-   3. SECURITY HELPERS
+   INIT
    ========================================= */
-
-// Escape text before inserting it into HTML.
-function escapeHtml(value) {
-    return String(value ?? "").replace(/[&<>"']/g, char => ({
-        "&": "&amp;",
-        "<": "&lt;",
-        ">": "&gt;",
-        '"': "&quot;",
-        "'": "&#39;"
-    })[char]);
-}
-
-// Accept only HTTP(S) URLs.
-function safeHttpUrl(value) {
-    if (typeof value !== "string" || !value.trim()) {
-        return null;
-    }
-
-    try {
-        const url = new URL(value.trim(), window.location.href);
-
-        if (url.protocol !== "https:" && url.protocol !== "http:") {
-            return null;
-        }
-
-        return url.href;
-    } catch {
-        return null;
-    }
-}
-
-// Accept supported YouTube URL formats.
-function getYouTubeEmbedUrl(value) {
-    if (typeof value !== "string" || !value.trim()) {
-        return null;
-    }
-
-    try {
-        const url = new URL(value.trim());
-        const host = url.hostname.toLowerCase().replace(/^www\./, "");
-        let videoId = "";
-
-        if (host === "youtu.be") {
-            videoId = url.pathname.split("/").filter(Boolean)[0] || "";
-        } else if (
-            host === "youtube.com" ||
-            host === "m.youtube.com" ||
-            host === "youtube-nocookie.com"
-        ) {
-            if (url.pathname === "/watch") {
-                videoId = url.searchParams.get("v") || "";
-            } else {
-                const parts = url.pathname.split("/").filter(Boolean);
-
-                if (["embed", "shorts", "live"].includes(parts[0])) {
-                    videoId = parts[1] || "";
-                }
-            }
-        } else {
-            return null;
-        }
-
-        if (!/^[a-zA-Z0-9_-]{11}$/.test(videoId)) {
-            return null;
-        }
-
-        return `https://www.youtube-nocookie.com/embed/${videoId}`;
-    } catch {
-        return null;
-    }
-}
-
-/* =========================================
-   4. UI UTILITIES
-   ========================================= */
-
-function hideLoader() {
-    if (!loader) return;
-
-    loader.style.opacity = "0";
-
-    window.setTimeout(() => {
-        loader.style.display = "none";
-    }, 300);
-}
-
-function showLoader() {
-    if (!loader) return;
-
-    loader.style.display = "";
-    loader.style.opacity = "1";
-}
-
-function showToast(message) {
-    if (!toast) {
-        console.log("[HilGaming]", message);
-        return;
-    }
-
-    if (toastTimer !== null) {
-        clearTimeout(toastTimer);
-    }
-
-    toast.textContent = message;
-    toast.classList.remove("hidden");
-    toast.style.opacity = "1";
-
-    toastTimer = window.setTimeout(() => {
-        toast.style.opacity = "0";
-
-        window.setTimeout(() => {
-            toast.classList.add("hidden");
-        }, 300);
-    }, 3000);
-}
-
-function renderMessage(container, message, isError = false) {
-    if (!container) return;
-
-    const paragraph = document.createElement("p");
-    paragraph.textContent = message;
-    paragraph.style.textAlign = "center";
-    paragraph.style.color = isError ? "#e53935" : "#777";
-    paragraph.style.gridColumn = "1 / -1";
-
-    container.replaceChildren(paragraph);
-}
-
-/* =========================================
-   5. INITIALIZATION
-   ========================================= */
-
-document.addEventListener("DOMContentLoaded", initApp);
-
-function initApp() {
-    if (!gridContainer || !searchInput ||
-        !homeView || !detailsView || !modContent) {
-        console.error(
-            "HilGaming: required HTML elements are missing."
-        );
-        hideLoader();
-        return;
-    }
-
-    searchInput.addEventListener("input", handleSearch);
-
-    if (backBtn) {
-        backBtn.addEventListener("click", goHome);
-    }
-
+document.addEventListener('DOMContentLoaded', () => {
     fetchMods();
 
-    // Initialize the automatic ad schedule only once.
-    initializeInterstitial();
-}
+    // Search Listener
+    searchInput.addEventListener('input', (e) => {
+        const term = e.target.value.toLowerCase();
+        const filtered = allMods.filter(mod => 
+            mod.title.toLowerCase().includes(term) || 
+            mod.id.toLowerCase().includes(term)
+        );
+        renderMods(filtered);
+    });
+
+    // Navigation Listener
+    backBtn.addEventListener('click', goHome);
+});
 
 /* =========================================
-   6. LOAD MODS
+   DATA HANDLING
    ========================================= */
-
 async function fetchMods() {
-    if (isLoadingMods) return;
-
-    isLoadingMods = true;
-    showLoader();
-
-    const controller = new AbortController();
-    const timeoutId = window.setTimeout(
-        () => controller.abort(),
-        CONFIG.requestTimeoutMs
-    );
-
     try {
-        const response = await fetch(CONFIG.jsonUrl, {
-            method: "GET",
-            cache: "no-cache",
-            signal: controller.signal
-        });
-
-        if (!response.ok) {
-            throw new Error(`HTTP ${response.status}`);
-        }
-
-        const data = await response.json();
-
-        if (!Array.isArray(data)) {
-            throw new Error("mods.json must contain a JSON array.");
-        }
-
-        allMods = data
-            .filter(mod =>
-                mod &&
-                typeof mod.title === "string" &&
-                mod.title.trim().length > 0
-            )
-            .map((mod, index) => ({
-                ...mod,
-                id: String(mod.id ?? `mod-${index + 1}`),
-                images: Array.isArray(mod.images)
-                    ? mod.images.filter(img => safeHttpUrl(img))
-                    : [],
-                downloads: Array.isArray(mod.downloads)
-                    ? mod.downloads.filter(dl =>
-                        dl &&
-                        typeof dl.label === "string" &&
-                        safeHttpUrl(dl.url)
-                    )
-                    : []
-            }));
-
+        const response = await fetch(JSON_URL);
+        if (!response.ok) throw new Error('Failed to load data');
+        
+        allMods = await response.json();
+        
+        // Add ID if not in JSON for testing, strictly adhering to user JSON format
+        // We assume ID is part of title string or added manually. 
+        // For safer logic, let's parse ID from title if needed or use a generated one.
+        
         renderMods(allMods);
+        
+        // Hide Loader
+        setTimeout(() => {
+            loader.style.opacity = '0';
+            setTimeout(() => loader.style.display = 'none', 500);
+        }, 800);
 
-        console.log(
-            `HilGaming: loaded ${allMods.length} mods.`
-        );
     } catch (error) {
-        console.error("HilGaming: failed to load mods:", error);
-
-        renderMessage(
-            gridContainer,
-            error.name === "AbortError"
-                ? "Loading timed out. Please try again."
-                : "Unable to load mods. Check your connection and try again.",
-            true
-        );
-
-        // Offer a way to retry.
-        const retryButton = document.createElement("button");
-        retryButton.type = "button";
-        retryButton.className = "dl-btn";
-        retryButton.textContent = "Retry loading";
-        retryButton.addEventListener("click", fetchMods);
-        gridContainer.appendChild(retryButton);
-    } finally {
-        clearTimeout(timeoutId);
-        isLoadingMods = false;
-        hideLoader();
+        console.error(error);
+        gridContainer.innerHTML = '<p style="text-align:center; color:red">Error loading mods. Please refresh.</p>';
     }
 }
 
 /* =========================================
-   7. SEARCH
+   RENDERING
    ========================================= */
-
-function handleSearch(event) {
-    const term = event.target.value.trim().toLowerCase();
-
-    const filtered = allMods.filter(mod =>
-        mod.title.toLowerCase().includes(term) ||
-        mod.id.toLowerCase().includes(term)
-    );
-
-    renderMods(filtered);
-}
-
-/* =========================================
-   8. CATALOG
-   ========================================= */
-
-function getDisplayTitle(mod) {
-    return mod.title.split("|")[0].trim();
-}
-
-function getDisplayId(mod) {
-    const parts = mod.title.split("|");
-
-    return parts.length > 1
-        ? parts.slice(1).join("|").trim()
-        : mod.id;
-}
-
 function renderMods(mods) {
-    if (!gridContainer) return;
-
-    gridContainer.replaceChildren();
-
+    gridContainer.innerHTML = '';
+    
     if (mods.length === 0) {
-        renderMessage(gridContainer, "No mods found.");
+        gridContainer.innerHTML = '<p style="text-align:center; color:#777; grid-column: 1/-1;">No mods found.</p>';
         return;
     }
 
-    const fragment = document.createDocumentFragment();
-
     mods.forEach(mod => {
-        const card = document.createElement("div");
-        card.className = "mod-card";
-        card.tabIndex = 0;
-        card.setAttribute("role", "button");
-        card.setAttribute(
-            "aria-label",
-            `Open ${getDisplayTitle(mod)}`
-        );
+        // Extrai ID e Título
+        const displayId = mod.title.split('|')[1] ? mod.title.split('|')[1].trim() : 'MOD';
+        const displayTitle = mod.title.split('|')[0].trim();
 
+        // Lógica da Etiqueta (Badge)
+        let badgeHtml = '';
         if (mod.tag) {
-            const badge = document.createElement("span");
-            const tag = String(mod.tag).trim();
-            const tagClass =
-                tag.toUpperCase() === "NEW" ? "new" : "hot";
-
-            badge.className = `badge ${tagClass}`;
-            badge.textContent = tag;
-            card.appendChild(badge);
+            // Se a tag for "NEW", usa a classe .new, senão usa .hot
+            const tagClass = mod.tag.toUpperCase() === 'NEW' ? 'new' : 'hot';
+            badgeHtml = <span class="badge ${tagClass}">${mod.tag}</span>;
         }
 
-        if (mod.images.length > 0) {
-            const img = document.createElement("img");
-            img.src = mod.images[0];
-            img.alt = getDisplayTitle(mod);
-            img.className = "card-img";
-            img.loading = "lazy";
-            img.referrerPolicy = "no-referrer";
-            card.appendChild(img);
-        }
-
-        const info = document.createElement("div");
-        info.className = "card-info";
-
-        const title = document.createElement("h3");
-        title.className = "card-title";
-        title.textContent = getDisplayTitle(mod);
-
-        const id = document.createElement("span");
-        id.className = "card-id";
-        id.textContent = getDisplayId(mod);
-
-        info.append(title, id);
-        card.appendChild(info);
-
-        card.addEventListener("click", () => openModDetails(mod));
-
-        card.addEventListener("keydown", event => {
-            if (event.key === "Enter" || event.key === " ") {
-                event.preventDefault();
-                openModDetails(mod);
-            }
-        });
-
-        fragment.appendChild(card);
+        const card = document.createElement('div');
+        card.className = 'mod-card';
+        // Inserimos o badgeHtml antes da imagem
+        card.innerHTML = `
+            ${badgeHtml}
+            <img src="${mod.images[0]}" alt="${displayTitle}" class="card-img" loading="lazy">
+            <div class="card-info">
+                <h3 class="card-title">${displayTitle}</h3>
+                <span class="card-id">${displayId}</span>
+            </div>
+        `;
+        
+        card.addEventListener('click', () => openModDetails(mod));
+        gridContainer.appendChild(card);
     });
-
-    gridContainer.appendChild(fragment);
 }
 
-/* =========================================
-   9. NAVIGATION
-   ========================================= */
 
+/* =========================================
+   NAVIGATION & DETAILS
+   ========================================= */
 function goHome() {
-    detailsView.classList.add("hidden");
-    homeView.classList.remove("hidden");
+    detailsView.classList.add('hidden');
+    homeView.classList.remove('hidden');
     window.scrollTo(0, 0);
 }
 
 function openModDetails(mod) {
+    // 1. Render Content
     renderDetails(mod);
-
-    homeView.classList.add("hidden");
-    detailsView.classList.remove("hidden");
-
+    
+    // 2. Switch View
+    homeView.classList.add('hidden');
+    detailsView.classList.remove('hidden');
     window.scrollTo(0, 0);
+
+    // 3. 💰 TRIGGER: In-App Interstitial
+    triggerInAppInterstitial();
 }
 
-/* =========================================
-   10. MOD DETAILS
-   ========================================= */
-
 function renderDetails(mod) {
-    const imagesHtml = mod.images
-        .map(url => `
-            <img
-                src="${escapeHtml(url)}"
-                class="slide-img"
-                alt="Screenshot of ${escapeHtml(getDisplayTitle(mod))}"
-                loading="lazy"
-                referrerpolicy="no-referrer"
-            >
-        `)
-        .join("");
-
-    const videoUrl = getYouTubeEmbedUrl(mod.video);
-
-    const videoHtml = videoUrl
-        ? `
+    // 1. Galeria de Imagens
+    const imagesHtml = mod.images.map(img => <img src="${img}" class="slide-img" alt="Screenshot">).join('');
+    
+    // 2. Vídeo do YouTube (Tratamento de Link)
+    let videoHtml = '';
+    if (mod.video) {
+        // Converte links normais do YT em links de Embed
+        const videoId = mod.video.includes('v=') ? mod.video.split('v=')[1].split('&')[0] : mod.video.split('/').pop().split('?')[0];
+        videoHtml = `
             <div class="video-container">
-                <iframe
-                    src="${escapeHtml(videoUrl)}"
-                    title="${escapeHtml(getDisplayTitle(mod))} video"
-                    loading="lazy"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen
-                    referrerpolicy="strict-origin-when-cross-origin"
-                ></iframe>
+                <iframe src="https://www.youtube.com/embed/${videoId}" allowfullscreen></iframe>
             </div>
-        `
-        : "";
+        `;
+    }
 
-    const instructionsHtml = mod.instructions
-        ? `
+    // 3. Caixa de Instruções (Novo)
+    let instructionsHtml = '';
+    if (mod.instructions) {
+        instructionsHtml = `
             <div class="instructions-box">
-                <span class="instructions-title">
-                    <i class="fa-solid fa-circle-info"></i>
-                    How to Install:
-                </span>
-                <p>${escapeHtml(mod.instructions).replace(/\n/g, "<br>")}</p>
+                <span class="instructions-title"><i class="fa-solid fa-circle-info"></i> How to Install:</span>
+                <p>${mod.instructions.replace(/\n/g, '<br>')}</p>
             </div>
-        `
-        : "";
+        `;
+    }
 
-    const buttonsHtml = mod.downloads.map((dl, index) => `
-        <button
-            type="button"
-            class="dl-btn"
-            data-download-index="${index}"
-        >
-            <span>${escapeHtml(dl.label)}</span>
+    // 4. Botões de Download com Monetização
+    const buttonsHtml = mod.downloads.map(dl => `
+        <button class="dl-btn" onclick="handleMonetizedDownload('${dl.url}', '${dl.label}')">
+            <span>${dl.label}</span>
             <i class="fa-solid fa-download"></i>
         </button>
-    `).join("");
+    `).join('');
 
+    // Montagem Final do HTML
     modContent.innerHTML = `
-        <h1 class="detail-title">
-            ${escapeHtml(mod.title)}
-        </h1>
-
+        <h1 class="detail-title">${mod.title}</h1>
+        
         <div class="slideshow-container">
             ${imagesHtml}
         </div>
-
+        
         ${videoHtml}
         ${instructionsHtml}
 
         <div class="download-section">
-            <p class="dl-header">Download Links:</p>
-            ${buttonsHtml || "<p>No downloads available.</p>"}
+            <p class="dl-header">Secure Download Links:</p>
+            ${buttonsHtml}
         </div>
     `;
-
-    // Bind buttons without inline onclick handlers.
-    modContent.querySelectorAll("[data-download-index]")
-        .forEach(button => {
-            button.addEventListener("click", async () => {
-                const index = Number(
-                    button.dataset.downloadIndex
-                );
-                const download = mod.downloads[index];
-
-                if (!download) {
-                    showToast("Invalid download link.");
-                    return;
-                }
-
-                await handleMonetizedDownload(
-                    download.url,
-                    download.label,
-                    button
-                );
-            });
-        });
 }
+
 
 /* =========================================
-   11. MONETAG SDK HELPERS
+   💰 MONETIZATION LOGIC (CRITICAL)
    ========================================= */
 
-function getAdFunction() {
-    const fn = window[CONFIG.adFunctionName];
-
-    return typeof fn === "function" ? fn : null;
-}
-
+// Wrapper to safely check if SDK is loaded
 function isSdkReady() {
-    return getAdFunction() !== null;
+    return typeof show_9590572 === 'function';
 }
 
 /**
- * Configure In-App Interstitials once.
- *
- * The SDK configures automatic ad scheduling.
- * It does not wait for an ad impression to occur.
+ * Trigger In-App Interstitial
+ * Rules: Frequency 2, Interval 30s
  */
-function initializeInterstitial() {
-    if (
-        !CONFIG.enableInterstitial ||
-        interstitialInitialized
-    ) {
-        return;
-    }
-
-    const showAd = getAdFunction();
-
-    if (!showAd) {
-        console.warn(
-            "Monetag SDK not ready; interstitial not initialized."
-        );
-        return;
-    }
-
-    interstitialInitialized = true;
-
-    try {
-        Promise.resolve(
-            showAd({
-                type: "inApp",
-                inAppSettings: CONFIG.interstitial
-            })
-        ).catch(error => {
-            console.warn(
-                "Monetag interstitial setup failed:",
-                error
-            );
-            interstitialInitialized = false;
-        });
-    } catch (error) {
-        console.warn(
-            "Monetag interstitial error:",
-            error
-        );
-        interstitialInitialized = false;
+function triggerInAppInterstitial() {
+    if (isSdkReady()) {
+        try {
+            show_9590572({
+                type: 'inApp',
+                inAppSettings: {
+                    frequency: 2,
+                    capping: 0.1,
+                    interval: 30,
+                    timeout: 5,
+                    everyPage: false
+                }
+            });
+            console.log("Monetag: In-App Interstitial requested");
+        } catch (e) {
+            console.warn("Monetag Error:", e);
+        }
     }
 }
+
+/**
+ * Handle Rewarded Download
+ * Rules: Must watch ad before download starts
+ */
+window.handleMonetizedDownload = function(url, label) {
+    showToast(Preparing download for ${label}...);
+
+    if (isSdkReady()) {
+        // Call the Rewarded Interstitial
+        show_9590572().then(() => {
+            // SUCCESS: Ad watched or skipped (depending on network/availability)
+            showToast('Download Starting...');
+            
+            // Small delay for UX
+            setTimeout(() => {
+                window.open(url, '_blank');
+            }, 500);
+            
+        }).catch((e) => {
+            // ERROR: Ad failed to load or user closed it early (if SDK throws error)
+            // Fallback: Still allow download to not lose user
+            console.warn("Ad failed or skipped", e);
+            window.open(url, '_blank');
+        });
+    } else {
+        // SDK not loaded (AdBlocker?) -> Direct Download fallback
+        console.log("SDK not ready, direct download");
+        window.open(url, '_blank');
+    }
+};
 
 /* =========================================
-   12. MONETIZED DOWNLOADS
+   UTILITIES
    ========================================= */
-
-/**
- * Opens a download only after the required ad check.
- *
- * IMPORTANT:
- * With requireConfirmedReward enabled, a result other
- * than "valued" will not unlock the download.
- */
-async function handleMonetizedDownload(
-    url,
-    label,
-    button = null
-) {
-    if (activeDownload) {
-        showToast("Please wait for the current request.");
-        return;
-    }
-
-    const safeUrl = safeHttpUrl(url);
-
-    if (!safeUrl) {
-        showToast("This download link is invalid.");
-        return;
-    }
-
-    const showAd = getAdFunction();
-
-    if (!showAd) {
-        console.warn("Monetag SDK is unavailable.");
-
-        if (CONFIG.allowDirectDownloadOnAdFailure) {
-            openDownload(safeUrl);
-        } else {
-            showToast(
-                "Ads are unavailable. Please try again later."
-            );
-        }
-
-        return;
-    }
-
-    activeDownload = true;
-
-    if (button) {
-        button.disabled = true;
-        button.setAttribute("aria-busy", "true");
-    }
-
-    showToast(`Loading ad for ${label}...`);
-
-    try {
-        // The default call requests a Rewarded Interstitial.
-        const result = await showAd({
-            type: "end",
-            requestVar: "mod_download",
-            timeout: 30
-        });
-
-        if (
-            CONFIG.requireConfirmedReward &&
-            result?.reward_event_type !== "valued"
-        ) {
-            showToast(
-                "The ad reward could not be confirmed. Please try again."
-            );
-            return;
-        }
-
-        showToast("Download starting...");
-
-        openDownload(safeUrl);
-    } catch (error) {
-        console.warn("Monetag download ad failed:", error);
-
-        if (CONFIG.allowDirectDownloadOnAdFailure) {
-            showToast("Ad unavailable. Opening download...");
-            openDownload(safeUrl);
-        } else {
-            showToast(
-                "The ad could not be completed. Please try again."
-            );
-        }
-    } finally {
-        activeDownload = false;
-
-        if (button) {
-            button.disabled = false;
-            button.removeAttribute("aria-busy");
-        }
-    }
+function showToast(msg) {
+    const toast = document.getElementById('toast');
+    toast.innerText = msg;
+    toast.classList.remove('hidden');
+    toast.style.opacity = '1';
+    
+    setTimeout(() => {
+        toast.style.opacity = '0';
+        setTimeout(() => toast.classList.add('hidden'), 300);
+    }, 3000);
 }
-
-/**
- * Opens a validated HTTP(S) URL in a new tab.
- */
-function openDownload(url) {
-    const opened = window.open(url, "_blank", "noopener,noreferrer");
-
-    if (!opened) {
-        showToast(
-            "The download tab was blocked. Allow pop-ups and try again."
-        );
-    }
-}
-
-// Keep the existing global function name available if other
-// parts of the Mini App call it.
-window.handleMonetizedDownload = handleMonetizedDownload;
-
-/* =========================================
-   13. OPTIONAL: RETRY SDK INITIALIZATION
-   ========================================= */
-
-// Useful if the SDK loads after this file.
-window.addEventListener("load", () => {
-    if (!interstitialInitialized) {
-        initializeInterstitial();
-    }
-});
